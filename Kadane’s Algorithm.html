@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<script>
+function LargestSubarraySum(arr,total_size_of_arr) {
+		var maximum  = Number.MIN_VALUE, maximum_ending = 0, index_starting = 0, index_ending = 0, m = 0;
+
+		for (x = 0; x < total_size_of_arr; x++) {
+			maximum_ending += arr[x];
+
+			if (maximum  < maximum_ending) {
+				maximum  = maximum_ending;
+				index_starting = m;
+				index_ending = x;
+			}
+
+			if (maximum_ending < 0) {
+				maximum_ending = 0;
+				m = x + 1;
+			}
+		}
+
+		document.write("<br/>Starting index " + index_starting);
+		document.write("<br/>Ending index " + index_ending);
+		return maximum ;
+	}
+	
+		var arr = [ -2, 7, -4, -1, -3,-2, 1, 8, -3 ];
+		var total_size_of_arr = arr.length;
+		sum=LargestSubarraySum(arr, total_size_of_arr);		
+		document.write("<br>Maximum contiguous sum is: " + sum);
+</script>
+
+</body>
+</html>
